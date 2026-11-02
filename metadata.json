@@ -1,0 +1,6 @@
+{
+  "name": "EduCore AI",
+  "description": "An AI-powered learning assistant for students that converts PDFs into simple, plain-language explanations and interactive comprehension quizzes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
