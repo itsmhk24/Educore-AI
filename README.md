@@ -13,7 +13,7 @@ Product scope and acceptance criteria: [`docs/PRD.md`](docs/PRD.md).
    - Only the first 20 pages are processed (with a truncation notice in the UI)
    - Scanned PDFs without a text layer are rejected with a clear message
 2. The extracted text is posted to `POST /api/generate`.
-3. The server calls Gemini with a strict JSON response schema and validates the payload before returning it.
+3. The server calls Gemini with a strict JSON response schema and validates the payload before returning it. If the primary model is rate-limited or temporarily unavailable, it automatically falls back to a cheaper model.
 4. The UI renders the explanation, key takeaways, and a 3–5 question quiz with scoring and retakes.
 
 ## Requirements
@@ -62,7 +62,7 @@ src/
 ├─ lib/
 │  ├─ pdf.ts                # client-side PDF extraction
 │  ├─ prompt.ts             # prompt + response schema
-│  ├─ gemini.ts             # client, retries, lazy init
+│  ├─ gemini.ts             # client, model fallbacks, lazy init
 │  └─ validate.ts           # runtime guard for model output
 ├─ types/                   # shared types
 └─ data/sampleNotes.ts      # curated sample PDFs
